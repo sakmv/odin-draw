@@ -1,23 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>ETCH A SKETCH</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="main.js" defer></script>
-    </head>
-    <body>
-        <div class="header">
-            <h3>Saksham Verma</h3><span><a href="https://github.com/sakmv" rel="nopenner noreffer" target="_blank">Github</a></span>
-        </div>
-        <div class="Title">
-        <h1><img src="./images/ChatGPT Image May 23, 2025, 10_26_47 PM.png" alt="O" height="80px" width="auto">ETCH-A-SKETCH<img src="./images/ChatGPT Image May 23, 2025, 10_26_47 PM.png" alt="O" height="80px" width="auto"></h1>
-        </div>
-        <div class="boardHinge"><button class="clear">CLEAR</button></div>
-        <div class="board">hey there </div>
-        <div class="footer"><p> &copy; 2025 <a href="https://github.com/sakmv" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">@sakmv</a>.
-    Built for The Odin Project. 
-    All rights reserved.</p></div>
-    </body>
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ETCH A SKETCH</title>
+    <link rel="preload" as="image" href="./images/magicpattern-saRKnTHBEhU-unsplash.jpg" >
+    <link rel="preload" as="image" href="./images/ChatGPT Image May 23, 2025, 10_26_47 PM.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+  </head>
 
+  <body>
+    <div class="header">
+      <h3>Saksham Verma</h3>
+      <span><a href="https://github.com/sakmv" rel="noopener noreferrer" target="_blank">Github</a></span>
+    </div>
+
+    <div class="Title">
+      <h1>
+        <span class="logoO"></span>
+        ETCH-A-SKETCH
+        <span class="logoO"></span>
+      </h1>
+    </div>
+
+    <div class="boardHinge"><button class="clear">CLEAR</button><span><button class="grid">GRID</button></span></div>
+    <div class="board">
+        <div class="controls">
+            <div class="buttons">
+            <button id="btn1">button1</button>
+            <button id="btn2">button2</button>
+            <button id="btn3">button3</button>
+            <button id="btn4">button4</button>
+            </div>
+            <div class="size"> 
+                <p>Size of Grid: <span id="rangeValue">16</span></p><br>
+                <input type="range" id="range" min="1" max="100" value="16">
+            </div>
+        </div>
+        <div class="sketch"></div></div>
+
+    <div class="footer">
+      <p>
+        &copy; 2025
+        <a href="https://github.com/sakmv" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">@sakmv</a>.
+        Built for The Odin Project. All rights reserved.
+      </p>
+    </div>
+  </body>
 </html>
