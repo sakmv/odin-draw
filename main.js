@@ -1,38 +1,73 @@
 let mouseDown = false;
 let gridStatus= false;
+let eraser = false;
+let random = false;
+let sketch = document.querySelector(".sketch")
+sketch.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+});
+const button2=document.querySelector("#btn2")
+const button1 = document.querySelector("#btn1")
+button1.addEventListener("click",function(){
+    random=false;
+    button2.style.boxShadow="none"
+    eraser=!eraser
+    if(eraser){
+        button1.style.boxShadow = "0 0 20px rgb(250, 185, 8)"
+    }
+    else if(!eraser){
+        button1.style.boxShadow="none"
+    }
+})
 window.addEventListener("pointerdown", () => mouseDown = true);
 window.addEventListener("pointerup", () => mouseDown = false);
 function grid(size){
-    gridStatus= false;
-    let sketch = document.querySelector(".sketch")
-    sketch.innerHTML = ""
+    gridStatus= false
+    sketch.innerHTML=""
     sketch.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     sketch.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     for(let i=0;i<Math.pow(size, 2);i++){
     const div = document.createElement("div")
     div.style.backgroundColor="beige"
     div.addEventListener("mouseover",()=>{
-        if(mouseDown){
+        if(mouseDown&&!eraser&&!random){
             div.style.backgroundColor="black"
         }
+        else if(mouseDown&&eraser&&!random){
+            div.style.backgroundColor="beige"
+        }
+        else if(mouseDown&&!eraser&&random){
+            const hue = Math.floor(Math.random() * 360);
+            div.style.backgroundColor=`hsl(${hue}, 70%, 80%)`
+        }
     })
-    //
     div.addEventListener("click", () => {
+        if(!eraser&&!random){
   div.style.backgroundColor = "black";
+        }
+        else if(eraser){
+            div.style.backgroundColor="beige"
+        }
+        else if(random){
+            const hue = Math.floor(Math.random() * 360);
+            div.style.backgroundColor=`hsl(${hue}, 70%, 80%)`
+        }
 });
     sketch.appendChild(div)
 }
 }
 document.addEventListener("DOMContentLoaded",()=>grid(16))
 
-const value =document.querySelector("#rangeValue")
+const value =document.querySelectorAll("#rangeValue")
 const slider = document.querySelector("#range")
 slider.oninput=()=>{
-    value.textContent=slider.value
+    value.forEach(val=>{
+        val.innerHTML=slider.value
+    })
     grid(slider.value)
 }
- let gd= document.querySelector(".grid")
- let clear = document.querySelector(".clear")
+ const gd= document.querySelector(".grid")
+ const clear = document.querySelector(".clear")
 clear.addEventListener("click",function(){
         const block =document.querySelectorAll(".sketch div")
         block.forEach(bk=>{
@@ -52,6 +87,17 @@ gd.addEventListener("click",function(){
      block.forEach((bk)=>{
         bk.style.border="0"
     })
+    }
+})
+button2.addEventListener("click",()=>{
+    random=!random
+    eraser=false;
+    button1.style.boxShadow="none"
+    if(random){
+        button2.style.boxShadow = "0 0 20px rgb(250, 185, 8)"
+    }
+    else if(!random){
+        button2.style.boxShadow="none"
     }
 })
     
