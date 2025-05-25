@@ -4,13 +4,45 @@ let gridStatus= false;
 let eraser = false;
 let random = false;
 let shading = false;
-let sketch = document.querySelector(".sketch")
-sketch.addEventListener("pointerdown", (e) => {
-  e.preventDefault();
-});
+
+const button4 = document.querySelector("#btn4")
 const button3=document.querySelector("#btn3")
 const button2=document.querySelector("#btn2")
 const button1 = document.querySelector("#btn1")
+const sketch = document.querySelector(".sketch")
+const value =document.querySelectorAll("#rangeValue")
+const slider = document.querySelector("#range")
+const gd= document.querySelector(".grid")
+const clear = document.querySelector(".clear")
+const colorpick = document.querySelector("#colorPicker")
+
+//BUTTON( 1-4 )CLICK ACTIONS
+button1.addEventListener("click",function(){
+    eraser=!eraser
+    random=false;
+    shading=false;
+    button2.style.boxShadow="none"
+    button3.style.boxShadow="none"
+    if(eraser){
+        button1.style.boxShadow = "0 0 20px rgb(250, 185, 8)"
+    }
+    else if(!eraser){
+        button1.style.boxShadow="none"
+    }
+})
+button2.addEventListener("click",()=>{
+    random=!random
+    shading=false;
+    eraser=false;
+    button1.style.boxShadow="none"
+    button3.style.boxShadow="none"
+    if(random){
+        button2.style.boxShadow = "0 0 20px rgb(250, 185, 8)"
+    }
+    else if(!random){
+        button2.style.boxShadow="none"
+    }
+})
 button3.addEventListener("click",function(){
     shading=!shading
     random=false;
@@ -25,21 +57,25 @@ button3.addEventListener("click",function(){
     }
 
 })
-button1.addEventListener("click",function(){
+button4.addEventListener("click",function(){
+    eraser=false;
     random=false;
     shading=false;
+    button1.style.boxShadow="none"
     button2.style.boxShadow="none"
     button3.style.boxShadow="none"
-    eraser=!eraser
-    if(eraser){
-        button1.style.boxShadow = "0 0 20px rgb(250, 185, 8)"
-    }
-    else if(!eraser){
-        button1.style.boxShadow="none"
-    }
 })
+
+//TO ENABLE DRAG AND DRAW FEATURE
 window.addEventListener("pointerdown", () => mouseDown = true);
 window.addEventListener("pointerup", () => mouseDown = false);
+
+//TO PREVENT GHOST IMAGE DRAG DURING DRAWING ON THE SKETCHBOARD
+sketch.addEventListener("pointerdown", (e) => {
+  e.preventDefault();
+});
+
+//FUNCTION TO CREATE GRID AND ADD EVENT LISTENERS TO DRAW
 function grid(size){
     gridStatus= false
     sketch.innerHTML=""
@@ -87,18 +123,19 @@ function grid(size){
     sketch.appendChild(div)
 }
 }
+
+//LOADS GRID OF DIMENSION 16X16 AFTER DOM HAS LOADED
 document.addEventListener("DOMContentLoaded",()=>grid(16))
 
-const value =document.querySelectorAll("#rangeValue")
-const slider = document.querySelector("#range")
+//TO FORM GRID ON THE INPUT FROM SLIDER
 slider.oninput=()=>{
     value.forEach(val=>{
         val.innerHTML=slider.value
     })
     grid(slider.value)
 }
- const gd= document.querySelector(".grid")
- const clear = document.querySelector(".clear")
+
+//CLEARS THE GRID
 clear.addEventListener("click",function(){
         const block =document.querySelectorAll(".sketch div")
         block.forEach(bk=>{
@@ -106,10 +143,11 @@ clear.addEventListener("click",function(){
             bk.style.backgroundColor="beige"
 
 })})
+
+//GRID BORDER TURN ON AND OFF
 gd.addEventListener("click",function(){
     gridStatus=!gridStatus
-    console.log(gridStatus)
-     const block = document.querySelectorAll(".sketch div")
+    const block = document.querySelectorAll(".sketch div")
     if(gridStatus){
    
     block.forEach((bk)=>{
@@ -121,30 +159,11 @@ gd.addEventListener("click",function(){
     })
     }
 })
-button2.addEventListener("click",()=>{
-    random=!random
-    shading=false;
-    eraser=false;
-    button1.style.boxShadow="none"
-    button3.style.boxShadow="none"
-    if(random){
-        button2.style.boxShadow = "0 0 20px rgb(250, 185, 8)"
-    }
-    else if(!random){
-        button2.style.boxShadow="none"
-    }
-})
-const colorpick = document.querySelector("#colorPicker")
+
+//TAKE COLOR AS INPUT
 colorpick.oninput=function(){
     color=colorpick.value
 }
-const button4 = document.querySelector("#btn4")
-button4.addEventListener("click",function(){
-    button1.style.boxShadow="none"
-    button2.style.boxShadow="none"
-    button3.style.boxShadow="none"
-    eraser=false;
-    random=false;
-    shading=false;
-})
+
+
     
