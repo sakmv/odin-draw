@@ -24,13 +24,13 @@ Draw using different colors, grid sizes, and modes like **shading**, **eraser**,
 ## Preview
 
 ### 32x32 Pixel Art
-![Pixel Art - 32x32](./images/Screenshot 2025-05-25 082004.png)
+![Pixel Art - 32x32]("./images/Screenshot 2025-05-25 082004.png")
 
 ### 16x16 Pixel Mario
-![Mario - 16x16](./images/Screenshot 2025-05-25 063150.png)
+![Mario - 16x16]("./images/Screenshot 2025-05-25 063150.png")
 
 ### Blank Canvas
-![Blank Canvas](./images/Screenshot 2025-05-25 063223.png)
+![Blank Canvas]("./images/Screenshot 2025-05-25 063223.png")
 
 ---
 
