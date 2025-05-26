@@ -8,8 +8,10 @@ Inspired by The Odin Project's Etch-E-Sketch
 Draw using different colors, grid sizes, and modes like **shading**, **eraser**, and **random**!
 
 ---
+## Live Link
+https://sakmv.github.io/odin-draw/
 
-## 🖌️ Features
+## Features
 
 - 🔳 Adjustable grid size (up to 100x100)
 - 🎨 Color picker
