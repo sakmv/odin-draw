@@ -1,7 +1,7 @@
 let color="black"
 let mouseDown = false;
 let gridStatus= false;
-let eraser = false;
+let eraser = true;
 let random = false;
 let shading = false;
 
@@ -77,13 +77,14 @@ sketch.addEventListener("pointerdown", (e) => {
 
 //FUNCTION TO CREATE GRID AND ADD EVENT LISTENERS TO DRAW
 function grid(size){
-    gridStatus= false
+    gridStatus= true
     sketch.innerHTML=""
     sketch.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     sketch.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     for(let i=0;i<Math.pow(size, 2);i++){
     const div = document.createElement("div")
     div.style.backgroundColor="beige"
+    div.style.border="1px solid rgb(0,0,0,0.2)"
     div.addEventListener("mouseover",()=>{
         if(mouseDown&&!eraser&&!random&&!shading){
             div.style.opacity="0.7"
